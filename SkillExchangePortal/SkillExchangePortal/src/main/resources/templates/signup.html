@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign Up | Skill Exchange Portal</title>
+
+    <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+
+<body>
+
+<nav>
+    <h2>Skill Exchange</h2>
+
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/login">Login</a></li>
+    </ul>
+</nav>
+
+<div class="container">
+
+    <h2>Create Your Account</h2>
+
+    <form action="/signup" method="post">
+
+        <input
+                type="text"
+                name="name"
+                placeholder="Enter Full Name"
+                required>
+
+        <input
+                type="email"
+                name="email"
+                placeholder="Enter Email Address"
+                required>
+
+        <input
+                type="password"
+                name="password"
+                placeholder="Create Password"
+                required>
+
+        <button type="submit">
+            Register
+        </button>
+
+    </form>
+
+    <div class="footer">
+        Already have an account?
+        <a href="/login">Login</a>
+    </div>
+
+</div>
+
+</body>
+</html>

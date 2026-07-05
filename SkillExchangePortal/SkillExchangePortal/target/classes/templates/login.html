@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+
+<body>
+
+<nav>
+    <h2>Skill Exchange</h2>
+
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/signup">Sign Up</a></li>
+    </ul>
+</nav>
+
+<div class="container">
+
+    <h2>Login</h2>
+
+    <!-- Error Message -->
+    <div th:if="${error}" class="error">
+        <p th:text="${error}"></p>
+    </div>
+
+    <form action="/login" method="post">
+
+        <input
+                type="email"
+                name="email"
+                placeholder="Enter Email Address"
+                required>
+
+        <input
+                type="password"
+                name="password"
+                placeholder="Enter Password"
+                required>
+
+        <button type="submit">
+            Login
+        </button>
+
+    </form>
+
+    <div class="footer">
+        New User?
+        <a href="/signup">Create Account</a>
+    </div>
+
+</div>
+
+</body>
+
+</html>

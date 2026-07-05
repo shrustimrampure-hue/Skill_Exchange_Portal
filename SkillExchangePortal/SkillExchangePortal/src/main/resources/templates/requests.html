@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>My Requests</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+
+<body>
+
+<nav>
+    <h2>Skill Exchange</h2>
+
+    <ul>
+        <li><a href="/dashboard">Dashboard</a></li>
+        <li><a href="/add-skill">Add Skill</a></li>
+        <li><a href="/browse-skills">Browse Skills</a></li>
+        <li><a href="/requests">My Requests</a></li>
+        <li><a href="/logout">Logout</a></li>
+    </ul>
+</nav>
+
+<div class="container">
+
+    <h2>My Skill Requests</h2>
+
+    <!-- Success Message -->
+    <div th:if="${success}" class="success">
+        <p th:text="${success}"></p>
+    </div>
+
+    <!-- Error Message -->
+    <div th:if="${error}" class="error">
+        <p th:text="${error}"></p>
+    </div>
+
+    <table>
+
+        <thead>
+        <tr>
+            <th>Request No</th>
+            <th>Skill</th>
+            <th>Requested By</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+
+        <tbody>
+
+        <tr th:each="request, stat : ${requests}">
+
+            <td th:text="${stat.count}"></td>
+
+            <td th:text="${request.skillName}"></td>
+
+            <td th:text="${request.requesterEmail}"></td>
+
+            <td>
+
+                <span class="status approved"
+                      th:if="${request.status == 'Approved'}">
+                    🟢 Approved
+                </span>
+
+                <span class="status rejected"
+                      th:if="${request.status == 'Rejected'}">
+                    🔴 Rejected
+                </span>
+
+                <span class="status pending"
+                      th:if="${request.status == 'Pending'}">
+                    🟡 Pending
+                </span>
+
+            </td>
+
+            <td>
+
+                <a th:if="${request.status == 'Pending'}"
+                   th:href="@{/approve/{id}(id=${request.id})}"
+                   class="btn-small approve">
+                    Approve
+                </a>
+
+                <a th:if="${request.status == 'Pending'}"
+                   th:href="@{/reject/{id}(id=${request.id})}"
+                   class="btn-small reject">
+                    Reject
+                </a>
+
+                <span th:if="${request.status != 'Pending'}">
+                    -
+                </span>
+
+            </td>
+
+        </tr>
+
+        </tbody>
+
+    </table>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>My Profile</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+
+<body>
+
+<nav>
+    <h2>Skill Exchange Portal</h2>
+
+    <ul>
+        <li><a href="/dashboard">Dashboard</a></li>
+        <li><a href="/browse-skills">Browse Skills</a></li>
+        <li><a href="/requests">My Requests</a></li>
+        <li><a href="/logout">Logout</a></li>
+    </ul>
+</nav>
+
+<div class="container">
+
+    <h2>My Profile</h2>
+
+    <table>
+
+        <tr>
+            <th>Name</th>
+            <td th:text="${user.name}"></td>
+        </tr>
+
+        <tr>
+            <th>Email</th>
+            <td th:text="${user.email}"></td>
+        </tr>
+
+    </table>
+
+</div>
+
+</body>
+</html>

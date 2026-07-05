@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Add Skill</title>
+
+    <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+
+<body>
+
+<nav>
+
+    <h2>Skill Exchange Portal</h2>
+
+    <ul>
+
+        <li><a href="/dashboard">Dashboard</a></li>
+
+        <li><a href="/browse-skills">Browse Skills</a></li>
+
+        <li><a href="/logout">Logout</a></li>
+
+    </ul>
+
+</nav>
+
+<div class="container">
+
+    <h2>Add New Skill</h2>
+    <p th:if="${error}"
+       th:text="${error}"
+       style="color:red;font-weight:bold;text-align:center;">
+    </p>
+
+    <form action="/add-skill" method="post">
+
+        <input
+                type="text"
+                name="skillName"
+                placeholder="Skill Name"
+                required>
+
+        <input
+                type="text"
+                name="category"
+                placeholder="Category">
+
+        <select name="level" style="width:100%;padding:12px;margin:10px 0;border-radius:8px;">
+            <option>Beginner</option>
+            <option>Intermediate</option>
+            <option>Advanced</option>
+        </select>
+
+        <textarea
+                name="description"
+                placeholder="Skill Description"
+                style="width:100%;height:120px;padding:12px;margin:10px 0;border-radius:8px;"></textarea>
+
+        <button type="submit">
+            Add Skill
+        </button>
+
+    </form>
+
+</div>
+
+</body>
+</html>

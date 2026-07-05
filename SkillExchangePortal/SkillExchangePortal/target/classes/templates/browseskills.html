@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <meta charset="UTF-8">
+    <title>Browse Skills</title>
+
+    <link rel="stylesheet" th:href="@{/style.css}">
+
+</head>
+
+<body>
+
+<nav>
+
+    <h2>Skill Exchange</h2>
+
+    <ul>
+        <li><a href="/dashboard">Dashboard</a></li>
+        <li><a href="/add-skill">Add Skill</a></li>
+        <li><a href="/browse-skills">Browse Skills</a></li>
+        <li><a href="/requests">My Requests</a></li>
+        <li><a href="/logout">Logout</a></li>
+    </ul>
+
+</nav>
+
+<div class="container">
+
+    <h2>Available Skills</h2>
+
+    <div th:if="${error}" class="error">
+        <p th:text="${error}"></p>
+    </div>
+
+    <form action="/browse-skills" method="get" class="search-box">
+
+        <input
+                type="text"
+                name="keyword"
+                placeholder="Search Skill">
+
+        <button type="submit">Search</button>
+
+    </form>
+
+    <div class="skills-container">
+
+        <div class="skill-card" th:each="skill : ${skills}">
+
+            <h3 th:text="${skill.skillName}"></h3>
+
+            <p>
+                <strong>Category:</strong>
+                <span th:text="${skill.category}"></span>
+            </p>
+
+            <p>
+                <strong>Level:</strong>
+                <span th:text="${skill.level}"></span>
+            </p>
+
+            <p th:text="${skill.description}"></p>
+
+            <form action="/request-skill" method="post">
+
+                <input
+                        type="hidden"
+                        name="skillId"
+                        th:value="${skill.id}">
+
+                <button type="submit">
+                    Request Skill
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>
