@@ -132,7 +132,7 @@ SkillExchangePortalApplication.java
 6. Open your browser and visit
 
 ```
-http://localhost:8080
+http://localhost:8081
 ```
 
 ---
@@ -164,8 +164,8 @@ http://localhost:8080
 ## 👥 Team Members
 
 - Shrusti M
-- Preeti
-- Rakshitha
+- Preeti R
+- Rakshitha B
 - Soumyashree
 
 ---
